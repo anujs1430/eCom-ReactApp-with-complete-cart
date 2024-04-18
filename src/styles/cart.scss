@@ -1,0 +1,107 @@
+@import 'color.scss';
+
+.cart{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 4fr 1fr ;
+
+    >main{
+        padding: 2rem;
+        overflow-y: auto;
+        
+        >h1{
+            color: $tertiary;
+        }
+
+        img.emptyCartImg{
+            max-width: 50%;
+            max-height: 60%;
+            margin: auto;
+            width: 100%;
+            filter: brightness(0.5);
+            display: grid;
+        }
+    }
+
+    >aside{
+        border-radius: 100px 0 0 100px;
+        background-color: $primary;
+        color: $tertiary;
+        height: 90%;
+        width: 20%;
+        box-shadow: -10px 0 10px #353535;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 1rem;
+        position: fixed;
+        right: 0;
+
+        >h2{
+            margin: 1rem;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+
+            &:last-of-type{
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+.CartItem{
+    background-color: $tertiary;
+    // width: 100%;
+    border-radius: 10px;
+    margin: 0 2rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    align-items: center;
+    gap: 20px;
+
+    img{
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+    }
+
+        >div{
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            button{
+                width: 30px;
+                height: 30px;
+                border: none;
+                color: $tertiary;
+                background-color: $primary;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover{
+                    background-color: $primaryDark;
+                }
+            }
+
+            >p{
+                width: 30px;
+                height: 30px;
+                display: grid;
+                place-items: center;
+            }
+        }
+
+        svg{
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: inline-block;
+            margin: auto;
+
+            &:hover{
+                color: $secondry;
+            }
+        }
+
+}
