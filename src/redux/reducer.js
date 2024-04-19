@@ -28,12 +28,32 @@ export const cartReducer = createReducer(initialState, (builder) => {
   });
 
   builder.addCase("calculatePrice", (state) => {
+    // Initialize sum to calculate subtotal
     let sum = 0;
-    state.cartItems.forEach((i) => (sum += i.price * i.quantity));
+
+    // Loop through each item in the cart
+    state.cartItems.forEach((item) => {
+      // Add the price of each item multiplied by its quantity to the sum
+      sum += item.price * item.quantity;
+    });
+
+    // Set the subtotal in the state
     state.subTotal = sum;
+
+    // Determine shipping cost based on subtotal
     state.shipping = state.subTotal > 1000 ? 0 : 20;
+
+    // Calculate tax (18% of subtotal) and round to the nearest integer
     state.tax = +(state.subTotal * 0.18).toFixed();
+
+    // Calculate total by adding subtotal, tax, and shipping
     state.total = state.subTotal + state.tax + state.shipping;
+
+    // If the cart is empty, set shipping to 0
+    if (state.cartItems.length === 0) {
+      state.shipping = 0;
+      state.total = 0;
+    }
   });
 
   builder.addCase("decrement", (state, action) => {
