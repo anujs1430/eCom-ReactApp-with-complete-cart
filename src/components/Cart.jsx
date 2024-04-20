@@ -7,6 +7,11 @@ const Cart = () => {
     (state) => state.cart
   );
 
+  // IF WE DON'T HAVE ANY ITEM ON THE CART REDIRECT TO THE HOME PAGE TO SELECT A ITEM
+  if (cartItems.length === 0) {
+    window.location.href = "/";
+  }
+
   const dispatch = useDispatch();
 
   const deletehandler = (id) => {
@@ -22,11 +27,6 @@ const Cart = () => {
   const decrement = (id) => {
     dispatch({ type: "decrement", payload: id });
     dispatch({ type: "calculatePrice" });
-
-    // if (id.quantity == 0) {
-    //   dispatch({ type: "removeFromCart", payload: id });
-    //   dispatch({ type: "calculatePrice" });
-    // }
   };
 
   return (
